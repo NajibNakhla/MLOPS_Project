@@ -6,3 +6,4 @@ mlflow
 fastapi
 uvicorn
 joblib
+jupyter
