@@ -8,13 +8,3 @@ def train_decision_tree(X_train, y_train, random_state=42):
     return dt_model
 
 
-# Function to evaluate model performance
-def evaluate_model(model, X_test, y_test):
-    y_pred = model.predict(X_test)
-    
-    # Metrics
-    accuracy = accuracy_score(y_test, y_pred)
-    report = classification_report(y_test, y_pred)
-    cm = confusion_matrix(y_test, y_pred)
-    
-    return accuracy, report, cm

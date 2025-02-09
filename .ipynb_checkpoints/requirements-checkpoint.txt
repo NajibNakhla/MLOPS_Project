@@ -6,3 +6,7 @@ mlflow
 fastapi
 uvicorn
 joblib
+jupyter
+flake8
+black
+bandit
