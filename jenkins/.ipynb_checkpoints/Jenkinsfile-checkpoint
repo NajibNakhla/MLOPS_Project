@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         VENV_DIR = "venv"  // Virtual environment directory
+        MLFLOW_TRACKING_URI = "http://localhost:5000"  // MLflow tracking URI
     }
 
     stages {
@@ -11,6 +12,14 @@ pipeline {
                 echo 'Creating Virtual Environment & Installing Dependencies...'
                 sh 'python3 -m venv $VENV_DIR'
                 sh 'source $VENV_DIR/bin/activate && pip install -r requirements.txt'
+            }
+        }
+
+        stage('Start MLflow Server') {
+            steps {
+                echo 'Starting MLflow Tracking Server...'
+                sh 'nohup mlflow server --backend-store-uri sqlite:///mlflow.db --host 0.0.0.0 --port 5000 &'
+                sleep 5  // Allow MLflow to start
             }
         }
 
@@ -32,7 +41,7 @@ pipeline {
 
         stage('Train Decision Tree Model') {
             steps {
-                echo 'Training Decision Tree Model...'
+                echo 'Training Decision Tree Model and Logging to MLflow...'
                 sh 'source $VENV_DIR/bin/activate && python main.py --train --model decision_tree'
             }
         }

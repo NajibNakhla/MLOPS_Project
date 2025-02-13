@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761124435934894480/834647d6e1a744d6adb8ab9856647304/artifacts
+end_time: 1739482695937
+entry_point_name: ''
+experiment_id: '761124435934894480'
+lifecycle_stage: active
+run_id: 834647d6e1a744d6adb8ab9856647304
+run_name: classy-ray-969
+run_uuid: 834647d6e1a744d6adb8ab9856647304
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739482683565
+status: 3
+tags: []
+user_id: najib-2
