@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Starting MLflow Tracking Server...'
                 sh '''
-                    source $VENV_DIR/bin/activate
+                    . $VENV_DIR/bin/activate
                     nohup mlflow server --backend-store-uri sqlite:///mlflow.db --host 0.0.0.0 --port 5000 &
                 '''
                 sleep 5
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 echo 'Running Unit Tests...'
                 sh '''
-                    source $VENV_DIR/bin/activate
+                    . $VENV_DIR/bin/activate
                     pytest tests/
                 '''
             }
@@ -46,7 +46,7 @@ pipeline {
             steps {
                 echo 'Training Models...'
                 sh '''
-                    source $VENV_DIR/bin/activate
+                    . $VENV_DIR/bin/activate
                     python main.py --train --model decision_tree
                     python main.py --train --model random_forest
                 '''
@@ -57,7 +57,7 @@ pipeline {
             steps {
                 echo 'Deploying FastAPI Server...'
                 sh '''
-                    source $VENV_DIR/bin/activate
+                    . $VENV_DIR/bin/activate
                     nohup uvicorn fastapi_app:app --host $FASTAPI_HOST --port $FASTAPI_PORT &
                 '''
                 sleep 5
