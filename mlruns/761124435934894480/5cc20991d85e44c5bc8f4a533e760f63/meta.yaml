@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761124435934894480/5cc20991d85e44c5bc8f4a533e760f63/artifacts
+end_time: 1739773826721
+entry_point_name: ''
+experiment_id: '761124435934894480'
+lifecycle_stage: active
+run_id: 5cc20991d85e44c5bc8f4a533e760f63
+run_name: powerful-vole-879
+run_uuid: 5cc20991d85e44c5bc8f4a533e760f63
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739773809269
+status: 3
+tags: []
+user_id: najib-2

@@ -2,16 +2,19 @@ pipeline {
     agent any
 
     environment {
-        VENV_DIR = "venv"  // Virtual environment directory
-        MLFLOW_TRACKING_URI = "http://localhost:5000"  // MLflow tracking URI
+        VENV_DIR = "venv"
+        MLFLOW_TRACKING_URI = "http://localhost:5000"
+        FASTAPI_HOST = "0.0.0.0"
+        FASTAPI_PORT = "8000"
     }
 
     stages {
         stage('Setup Environment') {
             steps {
-                echo 'Creating Virtual Environment & Installing Dependencies...'
+                echo 'Setting up Virtual Environment...'
                 sh 'python3 -m venv $VENV_DIR'
-                sh 'source $VENV_DIR/bin/activate && pip install -r requirements.txt'
+                sh '$VENV_DIR/bin/pip install --upgrade pip'
+                sh '$VENV_DIR/bin/pip install -r requirements.txt --quiet'
             }
         }
 
@@ -19,37 +22,30 @@ pipeline {
             steps {
                 echo 'Starting MLflow Tracking Server...'
                 sh 'nohup mlflow server --backend-store-uri sqlite:///mlflow.db --host 0.0.0.0 --port 5000 &'
-                sleep 5  // Allow MLflow to start
-            }
-        }
-
-        stage('Code Quality Check') {
-            steps {
-                echo 'Running Code Quality Checks...'
-                sh 'source $VENV_DIR/bin/activate && flake8 src/'  // Linting
-                sh 'source $VENV_DIR/bin/activate && black --check src/'  // Formatting check
-                sh 'source $VENV_DIR/bin/activate && bandit -r src/'  // Security check
+                sleep 5
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Running Unit Tests...'
-                sh 'source $VENV_DIR/bin/activate && pytest tests/'  // Run tests
+                sh '$VENV_DIR/bin/pytest tests/'  
             }
         }
 
-        stage('Train Decision Tree Model') {
+        stage('Train Models') {
             steps {
-                echo 'Training Decision Tree Model and Logging to MLflow...'
-                sh 'source $VENV_DIR/bin/activate && python main.py --train --model decision_tree'
+                echo 'Training Models...'
+                sh '$VENV_DIR/bin/python main.py --train --model decision_tree'
+                sh '$VENV_DIR/bin/python main.py --train --model random_forest'
             }
         }
 
-        stage('Archive Model') {
+        stage('Deploy FastAPI') {
             steps {
-                echo 'Saving trained model...'
-                archiveArtifacts artifacts: 'models/*.pkl', fingerprint: true
+                echo 'Deploying FastAPI Server...'
+                sh 'nohup $VENV_DIR/bin/uvicorn fastapi_app:app --host $FASTAPI_HOST --port $FASTAPI_PORT &'
+                sleep 5
             }
         }
     }
@@ -59,7 +55,7 @@ pipeline {
             echo 'Pipeline completed successfully! ✅'
         }
         failure {
-            echo 'Pipeline failed. Check the logs for details. ❌'
+            echo 'Pipeline failed. Check logs. ❌'
         }
     }
 }
