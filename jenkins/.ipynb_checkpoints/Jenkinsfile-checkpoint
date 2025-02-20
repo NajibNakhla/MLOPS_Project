@@ -11,6 +11,11 @@ pipeline {
     stages {
         stage('Setup Environment') {
             steps {
+                echo 'Installing python3-venv if not installed...'
+                sh '''
+                    sudo apt update
+                    sudo apt install -y python3-venv
+                '''
                 echo 'Setting up Virtual Environment...'
                 sh 'python3 -m venv $VENV_DIR'
                 sh '$VENV_DIR/bin/pip install --upgrade pip'
