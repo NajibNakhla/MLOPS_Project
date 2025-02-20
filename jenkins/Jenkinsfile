@@ -40,7 +40,7 @@ pipeline {
                 sh '''
                     . $VENV_DIR/bin/activate
                     python main.py --train --model decision_tree
-                    python main.py --train --model random_forest
+                    
                 '''
             }
         }
