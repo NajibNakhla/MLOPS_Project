@@ -50,7 +50,7 @@ pipeline {
                 echo 'Deploying FastAPI Server...'
                 sh '''
                     . $VENV_DIR/bin/activate
-                    nohup uvicorn fastapi_app:app --host $FASTAPI_HOST --port $FASTAPI_PORT &
+                    nohup uvicorn fastapi_app.app:app --host $FASTAPI_HOST --port $FASTAPI_PORT &
                 '''
                 sleep 5
             }
