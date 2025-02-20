@@ -10,3 +10,4 @@ jupyter
 flake8
 black
 bandit
+pytest
