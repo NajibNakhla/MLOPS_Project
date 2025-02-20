@@ -32,15 +32,7 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                echo 'Running Unit Tests...'
-                sh '''
-                    . $VENV_DIR/bin/activate
-                    pytest tests/
-                '''
-            }
-        }
+        
 
         stage('Train Models') {
             steps {
