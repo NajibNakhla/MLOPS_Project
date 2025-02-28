@@ -13,6 +13,7 @@ AVAILABLE_MODELS = {
     "decision_tree": os.path.join(MODEL_DIR, "decision_tree_model.pkl"),
     "random_forest": os.path.join(MODEL_DIR, "random_forest_model.pkl"),
     "logistic_regression": os.path.join(MODEL_DIR, "logistic_regression_model.pkl"),
+    "NN": os.path.join(MODEL_DIR, "NN_model.pkl"),
 }
 
 # Load models into a dictionary
