@@ -7,8 +7,8 @@ from src.mlflow import start_mlflow
 def main():
     parser = argparse.ArgumentParser(description="Main entry point for MLOps pipeline")
     parser.add_argument('--train', action='store_true', help="Train a machine learning model")
-    parser.add_argument('--model', type=str, choices=['decision_tree', 'random_forest','logistic_regression'], 
-                        help="Specify the model to train (decision_tree, random_forest,logistic_regression)")
+    parser.add_argument('--model', type=str, choices=['decision_tree', 'random_forest','logistic_regression','NN'], 
+                        help="Specify the model to train (decision_tree, random_forest,logistic_regression, NN)")
     parser.add_argument('--test', action='store_true', help="Run tests for the project")
     parser.add_argument('--api', action='store_true', help="Start FastAPI server")
 
