@@ -4,7 +4,7 @@ import mlflow
 import mlflow.sklearn
 from src.model_process_data import prepare_data
 from src.model_balance_data import prepare_model_data
-from src.model_train import train_decision_tree
+from src.model_train import train_decision_tree,train_random_forest
 from src.model_evaluate import evaluate_model
 
 # Set MLflow tracking URI (Make sure MLflow is running)
@@ -35,6 +35,8 @@ def run_pipeline(model_name):
         print(f"\nTraining {model_name} model...")
         if model_name == "decision_tree":
             model = train_decision_tree(X_train, y_train)
+        elif model_name == "random_forest":
+        	model = train_random_forest(X_train, y_train)
         else:
             raise ValueError(f"Model '{model_name}' is not supported.")
 

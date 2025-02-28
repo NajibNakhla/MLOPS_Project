@@ -11,7 +11,7 @@ app = FastAPI()
 MODEL_DIR = "models"
 AVAILABLE_MODELS = {
     "decision_tree": os.path.join(MODEL_DIR, "decision_tree_model.pkl"),
-    
+    "random_forest": os.path.join(MODEL_DIR, "random_forest_model.pkl"),
 }
 
 # Load models into a dictionary
