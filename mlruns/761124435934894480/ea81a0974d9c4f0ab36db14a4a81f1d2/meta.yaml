@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761124435934894480/ea81a0974d9c4f0ab36db14a4a81f1d2/artifacts
+end_time: 1740725612675
+entry_point_name: ''
+experiment_id: '761124435934894480'
+lifecycle_stage: active
+run_id: ea81a0974d9c4f0ab36db14a4a81f1d2
+run_name: glamorous-bat-404
+run_uuid: ea81a0974d9c4f0ab36db14a4a81f1d2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740725606041
+status: 3
+tags: []
+user_id: jenkins

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761124435934894480/d25c8c9b173849b1a53a12283af8b329/artifacts
+end_time: 1740767384460
+entry_point_name: ''
+experiment_id: '761124435934894480'
+lifecycle_stage: active
+run_id: d25c8c9b173849b1a53a12283af8b329
+run_name: wise-fox-249
+run_uuid: d25c8c9b173849b1a53a12283af8b329
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740767381180
+status: 3
+tags: []
+user_id: najib-2
