@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761124435934894480/3e51e4d54cd54a89975d36dde234b672/artifacts
+end_time: 1740724154288
+entry_point_name: ''
+experiment_id: '761124435934894480'
+lifecycle_stage: active
+run_id: 3e51e4d54cd54a89975d36dde234b672
+run_name: bemused-seal-825
+run_uuid: 3e51e4d54cd54a89975d36dde234b672
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740724149201
+status: 3
+tags: []
+user_id: najib-2

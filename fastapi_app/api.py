@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, validator
+import uvicorn
 import joblib
 import numpy as np
 import os
@@ -7,10 +8,10 @@ import os
 app = FastAPI()
 
 # Define the available models
-MODEL_DIR = "../models"
+MODEL_DIR = "models"
 AVAILABLE_MODELS = {
     "decision_tree": os.path.join(MODEL_DIR, "decision_tree_model.pkl"),
-    "random_forest": os.path.join(MODEL_DIR, "random_forest_model.pkl"),
+    
 }
 
 # Load models into a dictionary
@@ -55,3 +56,9 @@ def predict(data: FeaturesInput):
     prediction = models[model_name].predict([data.features])
     
     return {"model_used": model_name, "prediction": int(prediction[0])}
+
+
+def start_fastapi():
+    """Start FastAPI server."""
+    print("🚀 Starting FastAPI server...")
+    uvicorn.run("fastapi_app.api:app", host="0.0.0.0", port=8000, reload=True)

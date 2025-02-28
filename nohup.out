@@ -1,0 +1,18 @@
+[2025-02-20 08:15:51 +0100] [36542] [INFO] Starting gunicorn 23.0.0
+[2025-02-20 08:15:51 +0100] [36542] [INFO] Listening at: http://0.0.0.0:5000 (36542)
+[2025-02-20 08:15:51 +0100] [36542] [INFO] Using worker: sync
+[2025-02-20 08:15:51 +0100] [36544] [INFO] Booting worker with pid: 36544
+[2025-02-20 08:15:51 +0100] [36545] [INFO] Booting worker with pid: 36545
+[2025-02-20 08:15:51 +0100] [36546] [INFO] Booting worker with pid: 36546
+[2025-02-20 08:15:51 +0100] [36547] [INFO] Booting worker with pid: 36547
+[2025-02-20 21:34:43 +0100] [36542] [ERROR] Worker (pid:36545) was sent SIGHUP!
+[2025-02-20 21:34:43 +0100] [36542] [INFO] Handling signal: hup
+[2025-02-20 21:34:43 +0100] [36542] [INFO] Hang up: Master
+[2025-02-20 21:34:43 +0100] [36542] [ERROR] Worker (pid:36544) was sent SIGHUP!
+[2025-02-20 21:34:43 +0100] [36542] [ERROR] Worker (pid:36546) was sent SIGHUP!
+[2025-02-20 21:34:43 +0100] [36542] [ERROR] Worker (pid:36547) was sent SIGHUP!
+[2025-02-20 21:34:43 +0100] [37488] [INFO] Booting worker with pid: 37488
+[2025-02-20 21:34:43 +0100] [37489] [INFO] Booting worker with pid: 37489
+[2025-02-20 21:34:43 +0100] [37490] [INFO] Booting worker with pid: 37490
+[2025-02-20 21:34:43 +0100] [37491] [INFO] Booting worker with pid: 37491
+ERROR:    Error loading ASGI app. Attribute "app" not found in module "fastapi_app".

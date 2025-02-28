@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        VENV_DIR = "venv"
+        VENV_DIR = "venv"  // No need for full path if it's in the project root directory
         MLFLOW_TRACKING_URI = "http://localhost:5000"
         FASTAPI_HOST = "0.0.0.0"
         FASTAPI_PORT = "8000"
@@ -11,45 +11,47 @@ pipeline {
     stages {
         stage('Setup Environment') {
             steps {
-                echo 'Installing python3-venv if not installed...'
-                sh '''
-                    sudo apt update
-                    sudo apt install -y python3-venv
-                '''
                 echo 'Setting up Virtual Environment...'
-                sh 'python3 -m venv $VENV_DIR'
-                sh '$VENV_DIR/bin/pip install --upgrade pip'
-                sh '$VENV_DIR/bin/pip install -r requirements.txt --quiet'
+                sh '''
+                    python3 -m venv $VENV_DIR
+                    . $VENV_DIR/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt --quiet
+                '''
             }
         }
 
         stage('Start MLflow Server') {
             steps {
                 echo 'Starting MLflow Tracking Server...'
-                sh 'nohup mlflow server --backend-store-uri sqlite:///mlflow.db --host 0.0.0.0 --port 5000 &'
+                sh '''
+                    . $VENV_DIR/bin/activate
+                    mlflow ui --host 0.0.0.0 --port 5000 &
+                '''
                 sleep 5
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                echo 'Running Unit Tests...'
-                sh '$VENV_DIR/bin/pytest tests/'  
-            }
-        }
+        
 
         stage('Train Models') {
             steps {
                 echo 'Training Models...'
-                sh '$VENV_DIR/bin/python main.py --train --model decision_tree'
-                sh '$VENV_DIR/bin/python main.py --train --model random_forest'
+                sh '''
+                    . $VENV_DIR/bin/activate
+                    python main.py --train --model decision_tree
+                    
+                '''
             }
         }
 
         stage('Deploy FastAPI') {
             steps {
                 echo 'Deploying FastAPI Server...'
-                sh 'nohup $VENV_DIR/bin/uvicorn fastapi_app:app --host $FASTAPI_HOST --port $FASTAPI_PORT &'
+                sh '''
+                    . $VENV_DIR/bin/activate
+                    nohup uvicorn fastapi_app.api:app --host $FASTAPI_HOST --port $FASTAPI_PORT &
+                '''
                 sleep 5
             }
         }

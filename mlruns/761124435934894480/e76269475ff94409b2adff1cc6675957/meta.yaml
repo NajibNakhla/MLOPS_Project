@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761124435934894480/e76269475ff94409b2adff1cc6675957/artifacts
+end_time: 1740725187994
+entry_point_name: ''
+experiment_id: '761124435934894480'
+lifecycle_stage: active
+run_id: e76269475ff94409b2adff1cc6675957
+run_name: charming-sow-760
+run_uuid: e76269475ff94409b2adff1cc6675957
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740725183286
+status: 3
+tags: []
+user_id: najib-2

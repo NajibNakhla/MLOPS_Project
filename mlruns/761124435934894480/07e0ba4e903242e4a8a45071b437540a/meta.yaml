@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761124435934894480/07e0ba4e903242e4a8a45071b437540a/artifacts
+end_time: 1740035945170
+entry_point_name: ''
+experiment_id: '761124435934894480'
+lifecycle_stage: active
+run_id: 07e0ba4e903242e4a8a45071b437540a
+run_name: delicate-crab-289
+run_uuid: 07e0ba4e903242e4a8a45071b437540a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740035939719
+status: 3
+tags: []
+user_id: jenkins
