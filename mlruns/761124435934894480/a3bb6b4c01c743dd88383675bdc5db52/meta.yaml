@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761124435934894480/a3bb6b4c01c743dd88383675bdc5db52/artifacts
+end_time: 1740780402677
+entry_point_name: ''
+experiment_id: '761124435934894480'
+lifecycle_stage: active
+run_id: a3bb6b4c01c743dd88383675bdc5db52
+run_name: traveling-roo-548
+run_uuid: a3bb6b4c01c743dd88383675bdc5db52
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740780389512
+status: 3
+tags: []
+user_id: mahdi
