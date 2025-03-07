@@ -4,6 +4,7 @@ from model_pipeline import run_pipeline  # Import training pipeline
 from fastapi_app.api import start_fastapi  # Import FastAPI function
 from src.mlflow import start_mlflow
 
+
 def main():
     parser = argparse.ArgumentParser(description="Main entry point for MLOps pipeline")
     parser.add_argument('--train', action='store_true', help="Train a machine learning model")
@@ -23,6 +24,8 @@ def main():
         mlflow_process = start_mlflow() 
         print(f"🎯 Training {args.model} model...")
         run_pipeline(args.model)  
+        print("🚀 elasticasearch...")
+        
 
     if args.test:
         print("🧪 Running unit tests...")

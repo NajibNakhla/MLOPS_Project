@@ -1,0 +1,6 @@
+make setup 
+make mlflow 
+make train
+make run-api 
+make test 
+make clean 

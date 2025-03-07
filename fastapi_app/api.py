@@ -60,6 +60,12 @@ def predict(data: FeaturesInput):
     
     return {"model_used": model_name, "prediction": int(prediction[0])}
 
+#@app.post("/log_mlflow_experiment/")
+#def log_experiment():
+#    log_mlflow_experiment()
+#    return {"message": "MLflow experiment logged and log sent to Elasticsearch!"}
+
+
 
 def start_fastapi():
     """Start FastAPI server."""

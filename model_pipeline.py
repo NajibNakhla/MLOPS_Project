@@ -6,6 +6,7 @@ from src.model_process_data import prepare_data
 from src.model_balance_data import prepare_model_data
 from src.model_train import train_decision_tree,train_random_forest,train_logistic_regression, train_neural_network, train_svm
 from src.model_evaluate import evaluate_model
+from elasticsearch_logger import send_log_to_elasticsearch
 
 # Set MLflow tracking URI (Make sure MLflow is running)
 mlflow.set_tracking_uri("http://localhost:5000")
@@ -69,6 +70,10 @@ def run_pipeline(model_name):
         mlflow.sklearn.log_model(model, "model")
 
         print("\n✅ Model and metrics logged to MLflow!")
+
+        #logs to elastic
+        print("🚀 elasticasearch...")
+        send_log_to_elasticsearch(f"Trained model successfully!",accuracy,model_name)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
